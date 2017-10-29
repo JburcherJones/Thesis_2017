@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProjectE448_Final"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="ProjectE448_Final.MainPage"
+             BackgroundColor="BlanchedAlmond">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <chart:ChartColorCollection x:Key="Colors">
+                <Color>Blue</Color>
+
+            </chart:ChartColorCollection>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <StackLayout Grid.Column="0"
+                         Grid.Row="0"
+                         Orientation="Vertical"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="StartAndExpand"
+                         Spacing="5"
+                         Margin="10,0,10,0">
+
+                <Label HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="Large"
+                   TextColor="Chocolate"
+                   Text="Project(E) 448" 
+                   FontAttributes="Bold"/>
+                <BoxView HorizontalOptions="FillAndExpand"
+                     VerticalOptions="StartAndExpand"
+                     Color="Chocolate"
+                     HeightRequest="2"/>
+                <Button x:Name="connctToSever"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Text="Connect"
+                    TextColor="Chocolate"
+                    Clicked="connctToSever_Clicked">
+                </Button>
+                <Label x:Name="connectionStatus"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="Medium"
+                   TextColor="Red"
+                   Text="NOT CONNECTED" 
+                   FontAttributes="None"/>
+
+                <Label x:Name="Message"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="Medium"
+                   TextColor="Chocolate"
+                   Text="Message" 
+                   FontAttributes="None"/>
+
+                <Button x:Name="reqSQL"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Text="Request SQLite"
+                    TextColor="Chocolate"
+                    Clicked="reqSQL_Clicked"
+                    IsEnabled="False"
+                    IsVisible="False">
+                </Button>
+
+                <Button x:Name="pushSQL"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Text="Push to Azure"
+                    TextColor="Chocolate"
+                    Clicked="pushSQL_Clicked"
+                    IsEnabled="True"
+                    IsVisible="True">
+                </Button>
+            </StackLayout>
+
+
+
+
+            <chart:SfChart x:Name="ChartY" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Grid.Row="1" >
+                <chart:SfChart.ColorModel>
+                    <chart:ChartColorModel Palette="Custom" CustomBrushes="{StaticResource Colors}"/>
+                </chart:SfChart.ColorModel>
+                <chart:SfChart.Legend>
+
+                    <chart:ChartLegend/>
+
+                </chart:SfChart.Legend>
+
+                <chart:SfChart.ChartBehaviors>
+
+                    <chart:ChartZoomPanBehavior ZoomMode="X"/>
+
+                </chart:SfChart.ChartBehaviors>
+
+                <chart:SfChart.Title>
+
+                    <chart:ChartTitle Text="Generic Data"/>
+
+                </chart:SfChart.Title>
+
+                <chart:SfChart.PrimaryAxis>
+
+                    <chart:DateTimeAxis>
+
+                        <chart:DateTimeAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle LabelFormat="HH:mm:ss"/>
+                        </chart:DateTimeAxis.LabelStyle>
+
+                        <chart:DateTimeAxis.Title>
+
+                            <chart:ChartAxisTitle Text="Time"/>
+
+                        </chart:DateTimeAxis.Title>
+
+                    </chart:DateTimeAxis>
+
+                </chart:SfChart.PrimaryAxis>
+
+                <chart:SfChart.SecondaryAxis>
+
+                    <chart:NumericalAxis>
+
+                        <chart:NumericalAxis.Title>
+
+                            <chart:ChartAxisTitle Text="Units"/>
+
+                        </chart:NumericalAxis.Title>
+
+                    </chart:NumericalAxis>
+
+                </chart:SfChart.SecondaryAxis>
+
+            </chart:SfChart>
+
+        </Grid>
+
+
+    </ContentPage.Content>
+
+</ContentPage>
